@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Hello_AlexCc">
+  <meta name="keywords" content="Full stack engineer">
+  
+    <meta name="description" content="0.1 + 0.2不等于0.3？ https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903680362151950  JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE754(二进制浮点数算术) 标准 通过64位来表示一个数字 本质是：二进制模拟十进制进行计算时 的精度问题 IEEE754 的存储位有限 在二进制的处理过程中有两次精度丢失问题，一次是 存储，一次是">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2(%E5%87%86%E5%A4%87).html">
+<meta property="og:site_name" content="Hello_AlexCc">
+<meta property="og:description" content="0.1 + 0.2不等于0.3？ https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903680362151950  JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE754(二进制浮点数算术) 标准 通过64位来表示一个数字 本质是：二进制模拟十进制进行计算时 的精度问题 IEEE754 的存储位有限 在二进制的处理过程中有两次精度丢失问题，一次是 存储，一次是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-01T08:15:34.070Z">
+<meta property="article:modified_time" content="2023-06-01T08:15:34.070Z">
+<meta property="article:author" content="Hello_AlexCc">
+<meta property="article:tag" content="Full stack engineer">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>page.title - Hello_AlexCc</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hello_AlexCc</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="page.title">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="0-1-0-2不等于0-3？"><a href="#0-1-0-2不等于0-3？" class="headerlink" title="0.1 + 0.2不等于0.3？"></a>0.1 + 0.2不等于0.3？</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903680362151950">https://juejin.cn/post/6844903680362151950</a></p>
+</blockquote>
+<p>JavaScript使用Number类型表示数字（整数和浮点数），遵循 <code>IEEE754(二进制浮点数算术)</code> 标准 通过64位来表示一个数字</p>
+<p>本质是：二进制模拟十进制进行计算时 的精度问题</p>
+<p>IEEE754 的存储位有限</p>
+<p>在二进制的处理过程中有两次精度丢失问题，一次是 存储，一次是相加，最终导致 <code>0.1 + 0.2 = 0.30000000000000004</code></p>
+<h2 id="十进制小数如何转二进制？"><a href="#十进制小数如何转二进制？" class="headerlink" title="十进制小数如何转二进制？"></a>十进制小数如何转二进制？</h2><p>十进制小数转二进制，小数部分，乘 2 取整数，若乘之后的小数部分不为 0，继续乘以 2 直到小数部分为 0 ，将取出的整数正向排序。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">0.1</span> * <span class="hljs-number">2</span> = <span class="hljs-number">0.2</span> --------------- 取整数 <span class="hljs-number">0</span>，小数 <span class="hljs-number">0.2</span><br><span class="hljs-number">0.2</span> * <span class="hljs-number">2</span> = <span class="hljs-number">0.4</span> --------------- 取整数 <span class="hljs-number">0</span>，小数 <span class="hljs-number">0.4</span><br><span class="hljs-number">0.4</span> * <span class="hljs-number">2</span> = <span class="hljs-number">0.8</span> --------------- 取整数 <span class="hljs-number">0</span>，小数 <span class="hljs-number">0.8</span><br><span class="hljs-number">0.8</span> * <span class="hljs-number">2</span> = <span class="hljs-number">1.6</span> --------------- 取整数 <span class="hljs-number">1</span>，小数 <span class="hljs-number">0.6</span><br><span class="hljs-number">0.6</span> * <span class="hljs-number">2</span> = <span class="hljs-number">1.2</span> --------------- 取整数 <span class="hljs-number">1</span>，小数 <span class="hljs-number">0.2</span><br><span class="hljs-number">0.2</span> * <span class="hljs-number">2</span> = <span class="hljs-number">0.4</span> --------------- 取整数 <span class="hljs-number">0</span>，小数 <span class="hljs-number">0.4</span><br><span class="hljs-number">0.4</span> * <span class="hljs-number">2</span> = <span class="hljs-number">0.8</span> --------------- 取整数 <span class="hljs-number">0</span>，小数 <span class="hljs-number">0.8</span><br><span class="hljs-number">0.8</span> * <span class="hljs-number">2</span> = <span class="hljs-number">1.6</span> --------------- 取整数 <span class="hljs-number">1</span>，小数 <span class="hljs-number">0.6</span><br><span class="hljs-number">0.6</span> * <span class="hljs-number">2</span> = <span class="hljs-number">1.2</span> --------------- 取整数 <span class="hljs-number">1</span>，小数 <span class="hljs-number">0.2</span><br>...<br></code></pre></td></tr></table></figure>
+<p>最终 0.1 的二进制表示为 0.00110011… 后面将会 0011 无限循环，因此二进制无法精确的保存类似 0.1 这样的小数。那这样无限循环也不是办法，又该保存多少位呢？</p>
+<h2 id="遵循-IEEE-754-标准。"><a href="#遵循-IEEE-754-标准。" class="headerlink" title="遵循 IEEE 754 标准。"></a>遵循 IEEE 754 标准。</h2><p>IEEE 754 常用的两种浮点数值的表示方式为：单精确度（32位）、双精确度（64位）。例如， C 语言中的 float 通常是指 IEEE 单精确度，而 double 是指双精确度。</p>
+<h1 id="Number-的存储空间是多大？"><a href="#Number-的存储空间是多大？" class="headerlink" title="Number() 的存储空间是多大？"></a>Number() 的存储空间是多大？</h1><p>Math.pow(2, 53) ，53 为有效数字，会发生截断，等于 JS 能支持的最大数字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Number</span>.<span class="hljs-property">MAX_SAFE_INTEGER</span> === <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-number">2</span>, <span class="hljs-number">53</span>) - <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="JS-数据类型"><a href="#JS-数据类型" class="headerlink" title="JS 数据类型"></a>JS 数据类型</h1><p>基本类型（七中）：number, string, undefined, null, boolean, Symbol, bigint</p>
+<p>引用类型：Object，对象子类型（array, function）</p>
+<h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>事件流是网页元素接收事件的顺序，”DOM2级事件”规定的事件流包括三个阶段：<code>事件捕获阶段、处于目标阶段、事件冒泡阶段</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><br>    父元素<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>子元素<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> p = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;p&#x27;</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> s = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;span&#x27;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">    s.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;子   捕获&#x27;</span>)</span><br><span class="language-javascript">    &#125;, <span class="hljs-literal">true</span>)</span><br><span class="language-javascript">    s.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;子   冒泡&#x27;</span>)</span><br><span class="language-javascript">    &#125;, <span class="hljs-literal">false</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">    p.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;父组件捕获&#x27;</span>)</span><br><span class="language-javascript">    &#125;, <span class="hljs-literal">true</span>)</span><br><span class="language-javascript">      p.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;父组件冒泡&#x27;</span>)</span><br><span class="language-javascript">    &#125;, <span class="hljs-literal">false</span>)</span><br><span class="language-javascript">    </span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>同时存在捕获和冒泡事件时，点击 span 元素，会打印如下，遵循事件流的执行顺序。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">父组件捕获<br>子   捕获<br>子   冒泡<br>父组件冒泡<br></code></pre></td></tr></table></figure>
+
+<h1 id="什么是作用域"><a href="#什么是作用域" class="headerlink" title="什么是作用域"></a>什么是作用域</h1><p>作用域（Scope）是指在程序中定义<code>变量的可访问范围</code>。它规定了在哪些地方以及如何能够访问变量、函数和对象。</p>
+<p>es5：全局作用域和函数作用域，es6 有了块级作用域</p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>闭包是一种特殊的对象，它由两部分组成：执行上下文（代号 A），以及在该执行上下文中创建的函数 （代号 B），当 B 执行时，如果访问了 A 中变量对象的值，那么闭包就会产生。</p>
+<p>闭包是指有权访问另外一个函数作用域中的变量的函数</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li><p>封装私有变量</p>
+</li>
+<li><p>延迟执行：使用闭包可以实现延迟执行函数，即将一个函数作为返回值返回，并在后续的某个时刻执行该函数</p>
+</li>
+<li><p>模块化开发：通过闭包可以创建模块化的代码结构，将相关的函数和数据封装在一个闭包内部，提供对外暴露的接口，隐藏实现的细节。</p>
+</li>
+<li><p>循环中的问题：在使用循环时，闭包可以解决由于 JavaScript 作用域机制导致的变量共享问题。</p>
+</li>
+<li><p>防抖和节流：通过闭包可以实现防抖（debounce）和节流（throttle）等常见的函数优化技术，用于控制函数的触发频率。</p>
+</li>
+<li><p>实现高阶函数：闭包可以用于实现高阶函数，即函数作为参数或返回值的函数。通过闭包，可以捕获并记住外部函数的上下文和状态。</p>
+</li>
+</ul>
+<h1 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h1><p>当访问一个变量时，编译器在执行这段代码时，会首先从当前的作用域中查找是否有这个标识符，如果没有找到，就会去父作用域查找，如果父作用域还没找到继续向上查找，直到全局作用域为止</p>
+<h1 id="this-的四条规则"><a href="#this-的四条规则" class="headerlink" title="this 的四条规则"></a>this 的四条规则</h1><ul>
+<li>默认绑定</li>
+</ul>
+<p>没有其他修饰（bind、apply、call)，在非严格模式下定义指向全局对象，在严格模式下定义指向 undefined</p>
+<ul>
+<li>隐式绑定</li>
+</ul>
+<p>调用位置是否有上下文对象，或者是否被某个对象拥有或者包含，那么隐式绑定规则会把函数调用中的 this 绑定到这个上下文对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">a</span>);<br>&#125;<br><br><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">foo</span>: foo,<br>&#125;<br><br>obj.<span class="hljs-title function_">foo</span>(); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>显示绑定：通过在函数上运行 call 和 apply ，来显示的绑定 this</p>
+</li>
+<li><p>new 绑定</p>
+</li>
+</ul>
+<h1 id="手写-call、apply、bind"><a href="#手写-call、apply、bind" class="headerlink" title="手写 call、apply、bind"></a>手写 call、apply、bind</h1><p>call</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myCall</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args</span>) &#123;<br>  <span class="hljs-comment">// context 就是 call 第一个参数，上下文环境</span><br>  context = <span class="hljs-keyword">typeof</span> context === <span class="hljs-string">&#x27;object&#x27;</span> ? context || <span class="hljs-variable language_">window</span> : &#123;&#125;;<br><br>  <span class="hljs-keyword">const</span> s = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&#x27;fn&#x27;</span>)<br>  context[s] = <span class="hljs-variable language_">this</span> <span class="hljs-comment">// 将方法 赋值给 context 对象,</span><br><br>  <span class="hljs-keyword">const</span> result = context[s](...args) <span class="hljs-comment">// 在目标对象上(context)调用方法，方法内部的 this 就指向 context 了</span><br><br>  <span class="hljs-keyword">delete</span> context[s] <span class="hljs-comment">// 记得删除context 上定义的方法</span><br>  <br>  <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>apply 基本和 call 一样，只是参数不同，apply 接受一个数组作为参数。</p>
+<p>bind 基本上和 call、apply 也很相似，只不过返回了一个函数，执行时机灵活多变。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myBind</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args</span>) &#123;<br>  context = context || <span class="hljs-variable language_">window</span><br>  <span class="hljs-keyword">const</span> s = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&#x27;fn&#x27;</span>)<br><br>  context[s] = <span class="hljs-variable language_">this</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">..._args</span>) &#123;<br>    args = args.<span class="hljs-title function_">concat</span>(_args)<br>    <span class="hljs-keyword">const</span> r = context[s](...args)<br><br>    <span class="hljs-keyword">delete</span> context[s]<br><br>    <span class="hljs-keyword">return</span> r<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="实现一个-pipe-函数"><a href="#实现一个-pipe-函数" class="headerlink" title="实现一个 pipe 函数"></a>实现一个 pipe 函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">square</span> = v =&gt; v * v<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">double</span> = v =&gt; v * <span class="hljs-number">2</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">addOne</span> = v =&gt; v + <span class="hljs-number">1</span><br><br><span class="hljs-keyword">const</span> res = <span class="hljs-title function_">pipe</span>(square, double, addOne)<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">res</span>(<span class="hljs-number">3</span>)) <span class="hljs-comment">// 19; addOne(double(square(3)))</span><br></code></pre></td></tr></table></figure>
+
+<p>pipe是可以接收任意个数的函数，并且返回的是一个新的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">pipe</span>(<span class="hljs-params">...fns</span>) &#123;<br>  <br>  <span class="hljs-comment">// value 就是传入进来的数字</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) &#123;<br><br>    <span class="hljs-keyword">return</span> fns.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">pre, cur</span>) =&gt;</span> &#123;<br><br>      <span class="hljs-keyword">return</span> <span class="hljs-title function_">cur</span>(pre)<br>    &#125;, value)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由于 value 作为 reduce 的初始值，所以，第一次循环的结果是 cur(value)，也就是 square(3)</p>
+<p>第二次循环时，square(3) 就是 pre，cur(pre) 就是 <code>double(square(3))</code>，以此类推…</p>
+<h1 id="如何判断一个对象是不是空对象"><a href="#如何判断一个对象是不是空对象" class="headerlink" title="如何判断一个对象是不是空对象"></a>如何判断一个对象是不是空对象</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(obj).<span class="hljs-property">length</span> === <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="扁平化一个数组"><a href="#扁平化一个数组" class="headerlink" title="扁平化一个数组"></a>扁平化一个数组</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, [ <span class="hljs-number">5</span> ]]]]<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">flatten</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">const</span> result = []<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(arr[i])) &#123;<br>      result.<span class="hljs-title function_">push</span>(...<span class="hljs-title function_">flatten</span>(arr[i]))<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      result.<span class="hljs-title function_">push</span>(arr[i])<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> result<br>&#125;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">flatten</span>(arr))<br></code></pre></td></tr></table></figure>
+
+<h1 id="排序-冒泡-O-n-2"><a href="#排序-冒泡-O-n-2" class="headerlink" title="排序-冒泡 O(n^2)"></a>排序-冒泡 O(n^2)</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">99</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">5</span>]<br><br><span class="hljs-comment">// 冒泡</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">bubbleSort</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">let</span> length = arr.<span class="hljs-property">length</span><br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; length - i; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &lt; arr[j - <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-comment">// const temp = arr[j]</span><br>        <span class="hljs-comment">// arr[j] = arr[j - 1]</span><br>        <span class="hljs-comment">// arr[j - 1] = temp</span><br><br>        [arr[j], arr[j - <span class="hljs-number">1</span>]] = [arr[j - <span class="hljs-number">1</span>], arr[j]]<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">bubbleSort</span>(arr))<br></code></pre></td></tr></table></figure>
+
+<h1 id="排序-选择排序-O-n-2"><a href="#排序-选择排序-O-n-2" class="headerlink" title="排序-选择排序 O(n^2)"></a>排序-选择排序 O(n^2)</h1><p>假设数组第一个元素就是最小的值，双循环遍历数组，找到可能存在最小的值，和假定的最小值交换位置</p>
+<p>第二层循环 j = i，表示已经排序了的，不需要再遍历查找了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">selectSort</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">let</span> minIndex<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-comment">// 假设一个最小的值</span><br>    minIndex = i<br><br>    <span class="hljs-comment">// 让 j = i，表示前面已经排序了的，就不需要再排了</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i; j &lt; arr.<span class="hljs-property">length</span>; j ++) &#123;<br>      <span class="hljs-comment">// 一轮下来，肯定能找到一个最小值 index</span><br>      <span class="hljs-keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;<br>        minIndex = j<br>      &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 如果 minIndex !== i，表示存在比arr[minIndex]还小的值 arr[i]，和 i 进行交换</span><br>    <span class="hljs-keyword">if</span> (minIndex !== i) &#123;<br>      [arr[minIndex], arr[i]] = [arr[i], arr[minIndex]]<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="排序-插入排序"><a href="#排序-插入排序" class="headerlink" title="排序-插入排序"></a>排序-插入排序</h1><p>arr = [3, 2, 1, 6, 1, 99, 0, -1, 5]</p>
+<ol>
+<li><p>默认第一项是排序了的，所以遍历时从数组下标为 1 的位置开始</p>
+</li>
+<li><p>用 for 循环将当前遍历的项存储起来，current，并记录当前项的下标currentIndex</p>
+</li>
+<li><p>通过 while 循环，current 前面的项 和 current 比较</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">insertSort</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">let</span> current, currentIndex <span class="hljs-comment">// 当前项, 当前项下标</span><br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;<br><br>    current = arr[i] <br>    currentIndex = i<br><br>    <span class="hljs-comment">// 让当前项的前面的每一项和当前项 current 比较，</span><br>    <span class="hljs-keyword">while</span> (currentIndex &gt; <span class="hljs-number">0</span> &amp;&amp; arr[currentIndex - <span class="hljs-number">1</span>] &gt; current) &#123;<br>      arr[currentIndex] = arr[currentIndex - <span class="hljs-number">1</span>]<br>      currentIndex--<br>    &#125;<br><br>    <span class="hljs-comment">// currentIndex = 0</span><br>    arr[currentIndex] = current<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>第一轮</code>：</p>
+<p>arr = [3, 2, 1, 6, 1, 99, 0, -1, 5]</p>
+<p>current = 2, currentIndex = 1</p>
+<p>current 前一项<code>arr[currentIndex - 1] = 3</code>比 current = 2 大，那就让当前项 arr[currentIndex] 等于前一项，相当于大数字往后挪了一位，[3, 3, 1, 6 …]</p>
+<p>然后 currentIndex– = 0，currentIndex &gt; 0 不成立，结束 while，此时前两项是 [3, 3]</p>
+<p>最后，currentIndex = 0，需要让当前项（小值）插入到正确✅的位置</p>
+<p>arr[currentIndex] = current，前两项就排好序了 [2,3]</p>
+<p><code>第二轮</code></p>
+<p>arr = [2, 3, 1, 6, 1, 99, 0, -1, 5]</p>
+<p>current = 1, currentIndex = 2</p>
+<p>current 的前一项 <code>arr[currentIndex - 1] = 3</code> 比 current = 1 大，需要将大的往后挪一位，arr[currentIndex: 2] = arr[currentIndex - 1]，[2, 3, 1] =&gt; [2, 3, 3]</p>
+<p>然后 currentIndex– = 1，还要判断前面的项，是不是有比 current 大的数值，arr[currentIndex-1] &gt; current （2 &gt; 1）成立，所以将大的数值往后挪一位 [2, 3, 3] =&gt; [2, 2, 3]</p>
+<p>currentIndex– = 0，此时 currentIndex 等于 0，不符合 while 循环的条件了，退出</p>
+<p>最后，我们需要将小的值插入到正确✅的位置：arr[currentIndex: 0] = current(1)  =&gt; [1, 2, 3 …]</p>
+<p>…</p>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>最好的情况是，arr 本来就是有序的，所以每一次循环，都只需要比较一次，并且不需要交换位置，时间复杂度是 O(n - 1) ====&gt; 去掉常量就是 O(n)</p>
+<p>最坏的情况是，arr 是逆序的，每一次比较，都需要将前面的每一项都挪一下位置，并且将当前项插入到数组的头部，此时复杂度是 <code>O(n^2)</code></p>
+<p>空间复杂度是 <code>O(1)</code></p>
+<h1 id="meta-标签：自动刷新-跳转"><a href="#meta-标签：自动刷新-跳转" class="headerlink" title="meta 标签：自动刷新/跳转"></a>meta 标签：自动刷新/跳转</h1><p>假设要实现一个类似 PPT 自动播放的效果，你很可能会想到使用 JavaScript 定时器控制页面跳转来实现。但其实有更加简洁的实现方法，比如通过 meta 标签来实现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Refresh&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;5; URL=page2.html&quot;</span>&gt;</span> <br></code></pre></td></tr></table></figure>
+<p>上面的代码会在 5s 之后自动跳转到同域下的 page2.html 页面。我们要实现 PPT 自动播放的功能，只需要在每个页面的 meta 标签内设置好下一个页面的地址即可。</p>
+<p>另一种场景，比如每隔一分钟就需要<code>刷新页面</code>的大屏幕监控，也可以通过 meta 标签来实现，只需去掉后面的 URL 即可：</p>
+<meta http-equiv="Refresh" content="60">
+
+
+  
+</article>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hello-alex-cheng.github.io/" target="_blank" rel="nofollow noopener"><span>I</span></a> <i class="iconfont icon-love"></i> <a href="https://hello-alex-cheng.github.io/" target="_blank" rel="nofollow noopener"><span>YOU</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
