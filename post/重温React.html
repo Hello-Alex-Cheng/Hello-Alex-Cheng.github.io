@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/img/react.jpg">
 <meta property="article:published_time" content="2023-05-19T06:57:59.000Z">
-<meta property="article:modified_time" content="2023-05-29T13:00:43.582Z">
+<meta property="article:modified_time" content="2023-07-03T02:59:51.663Z">
 <meta property="article:author" content="Hello_AlexCc">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      14k 字
+      19k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      115 分钟
+      155 分钟
     </span>
   
 
@@ -266,7 +266,7 @@
 </li>
 </ul>
 <h1 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h1><p>单组件生命周期</p>
-<img src="/img/react-lifecycle.jpg" srcset="/img/loading.gif" lazyload />
+<img src="../img/react-lifecycle.jpg" srcset="/img/loading.gif" lazyload />
 
 
 <h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h2><p>在 componentDidMount 生命钩子中，组件已经挂在，真实 DOM 也已经渲染完成，是调用服务器 API 最安全的地方。</p>
@@ -375,7 +375,7 @@
 <p>React并不是将click事件绑在该div的真实DOM上，而是在document处监听所有支持的事件，当事件发生并<code>冒泡至document</code>处时，React将事件内容封装并交由真正的处理函数运行。</p>
 </li>
 </ul>
-<img src="/img/react-event.jpg" srcset="/img/loading.gif" lazyload />
+<img src="../img/react-event.jpg" srcset="/img/loading.gif" lazyload />
 
 <h2 id="event-对象（合成事件）"><a href="#event-对象（合成事件）" class="headerlink" title="event 对象（合成事件）"></a>event 对象（合成事件）</h2><blockquote>
 <p>React event 对象是 SyntheticBaseEvent，属于合成事件，模拟 DOM 事件的所有能力</p>
@@ -540,6 +540,82 @@
 <p>count = 0，点击异步执行后，再点击立即执行表示 count + 1，3秒后，打印结果为 0。</p>
 <p>原因：</p>
 <p>函数的变量保存在运行时的作用域里，在点击 <code>异步执行</code> 按钮的时候，执行函数的内部作用域将变量 count 复制了一份，无论 count 在这 3 秒内如何变化，定时器的回调函数读取的 count 还是原来的值。</p>
+<h1 id="React-Fiber"><a href="#React-Fiber" class="headerlink" title="React Fiber"></a>React Fiber</h1><p>React Fiber 是 React 中的一种新的协调引擎（reconciliation engine），它是从 React 16 版本开始引入的重大改进。</p>
+<p><code>React Fiber 的目标是提升 React 应用的性能、实现更好的并发控制，以及支持新的特性和能力。</code></p>
+<p><code>传统的 React 渲染过程是基于递归的</code>，当组件层级很深或组件树很大时，可能会出现长时间的渲染阻塞，导致用户界面的卡顿和不流畅。React Fiber 的目标是将渲染过程切割成一系列可中断的任务单元，可以通过优先级调度和时间片分配来控制任务的执行顺序，从而实现更细粒度的控制和更好的用户体验。</p>
+<p>React Fiber 的架构使得在渲染过程中可以<code>中断、暂停和恢复</code>渲染任务，这为实现<code>异步渲染</code>、<code>增量更新</code>和<code>并发渲染</code>提供了基础。它还支持 <code>优先级调度</code>，使得 React 能够根据任务的紧急程度动态地分配时间片，保证优先处理重要的任务，提高响应能力。</p>
+<p>主要用到了两个原生的 API <code>requesetAnimationFrame 和 requesetIdleCallback</code></p>
+<h2 id="为什么要-fiber"><a href="#为什么要-fiber" class="headerlink" title="为什么要 fiber"></a>为什么要 fiber</h2><p>当我们触发了状态的更新，那么整个组件树会触发重新 渲染，而构建 DOM树是同步递归的过程，那么组件如果很庞大且嵌套很深的话，那么构建过程可能就很长了，就容易出现明显的卡顿，阻塞其他进程执行，甚至卡死浏览器。</p>
+<p>优化：pureComponent，shouldUpdateComponent，useMemo，useCallback</p>
+<p>指标不治本，还是需要 Fiber</p>
+<h2 id="generator-也可以实现"><a href="#generator-也可以实现" class="headerlink" title="generator 也可以实现"></a>generator 也可以实现</h2><p>react 源码庞大，不适用 generator + yield</p>
+<p>generator 内部有状态，可能后面的依赖前面的结果，后面的执行后，前面的又更新了，导致状态不可控。</p>
+<h2 id="基于-requestAnimationFrame-实现任务调度和时间切片"><a href="#基于-requestAnimationFrame-实现任务调度和时间切片" class="headerlink" title="基于 requestAnimationFrame 实现任务调度和时间切片"></a>基于 requestAnimationFrame 实现任务调度和时间切片</h2><img src="https://img-blog.csdnimg.cn/img_convert/de36c884d07ce8f674e2f29f8b91419e.png" srcset="/img/loading.gif" lazyload />
+
+<p>React Fiber 依赖了 <code>requestAnimationFrame</code> 这个 API，它是在浏览器环境中提供的用于执行动画的定时器函数。<code>requestAnimationFrame</code> 方法会在浏览器下一次重绘之前调用指定的回调函数，用于实现平滑的动画效果。</p>
+<p>React Fiber 使用 <code>requestAnimationFrame</code> 来进行<strong>任务调度和时间切片</strong>。它利用 <code>requestAnimationFrame</code> 在浏览器空闲时间执行任务，以避免阻塞主线程，并提供更流畅的用户界面响应。</p>
+<p>通过使用 <code>requestAnimationFrame</code>，React Fiber 可以将任务拆分为更小的单元，并在每个时间片段内执行一部分任务，以便将渲染过程分散到多个帧中，提高应用的性能和响应能力。</p>
+<p>需要注意的是，<code>requestAnimationFrame</code> 是浏览器提供的 API，只能在浏览器环境中使用，无法在 Node.js 等非浏览器环境下运行。</p>
+<h2 id="requestAnimationFrame-原理是什么？"><a href="#requestAnimationFrame-原理是什么？" class="headerlink" title="requestAnimationFrame 原理是什么？"></a>requestAnimationFrame 原理是什么？</h2><p><code>requestAnimationFrame</code> 是浏览器提供的一个 API，用于在 <code>下一次重绘（repaint）之前</code> 执行回调函数，通常用于执行动画或其他需要与浏览器绘制同步的操作。</p>
+<p><code>requestAnimationFrame</code> 的工作原理如下：</p>
+<ol>
+<li><p>当调用 <code>requestAnimationFrame(callback)</code> 时，浏览器会在下一次重绘之前调用 <code>callback</code> 函数。重绘通常与显示器的刷新频率（一般是 60Hz）相匹配，即每秒触发约 60 次。</p>
+</li>
+<li><p>浏览器会在每个重绘的时机执行回调函数，这样可以确保回调函数在最佳的时机执行，避免了执行频率过高或过低的问题。</p>
+</li>
+<li><p><code>callback</code> 函数中执行的操作通常包括更新动画帧、计算布局或执行其他需要与页面绘制同步的任务。</p>
+</li>
+<li><p>如果在 <code>callback</code> 函数中再次调用 <code>requestAnimationFrame</code>，浏览器会安排下一次回调在下一次重绘之前执行，形成一个循环，从而实现动画的持续更新。</p>
+</li>
+</ol>
+<p>通过使用 <code>requestAnimationFrame</code>，可以有效利用浏览器的绘制时机，避免了过早或过晚执行动画帧的问题，提供了更平滑和高效的动画效果。同时，由于浏览器会自动调整重绘频率，节省了资源和电能的消耗。</p>
+<h2 id="requestAnimationFrame-VS-setInterval"><a href="#requestAnimationFrame-VS-setInterval" class="headerlink" title="requestAnimationFrame VS setInterval"></a>requestAnimationFrame VS setInterval</h2><ul>
+<li>更好的性能</li>
+</ul>
+<p>requestAnimationFrame使用浏览器的刷新频率来执行回调函数，它能够在每一帧之前进行优化，避免不必要的绘制操作，以提高性能。而setInterval则是固定的时间间隔执行回调函数，无法充分利用浏览器的优化机制，可能导致过多的绘制操作，影响性能。</p>
+<ul>
+<li>自动适应页面可见性</li>
+</ul>
+<p><code>requestAnimationFrame</code>会在<code>页面不可见</code>时<code>自动停止执行</code>，而 setInterval 会一直执行，无论页面是否可见。这样可以避免在后台标签页或不可见的页面上消耗不必要的计算资源。</p>
+<blockquote>
+<p>当页面被切换到后台标签页、最小化窗口或者切换到其他应用程序时，浏览器会将页面标记为不可见状态。在不可见状态下，浏览器会暂停或减少对页面的渲染和计算资源的分配，以节省电量和提高性能。</p>
+</blockquote>
+<ul>
+<li>更精确的时间控制</li>
+</ul>
+<p>requestAnimationFrame的回调函数会在每一帧之前执行，时间间隔由浏览器决定，通常为16毫秒（60帧每秒），可以保证动画的流畅性。而setInterval的时间间隔是固定的，可能会因为JavaScript线程的阻塞、页面负载等原因导致回调函数的执行时间不准确。</p>
+<ul>
+<li>避免掉帧现象</li>
+</ul>
+<p>requestAnimationFrame能够自动调整帧率，如果浏览器性能较差无法达到60帧每秒，它会自动降低帧率，避免掉帧现象。而setInterval无法自动调整帧率，可能导致动画不流畅或卡顿。</p>
+<h2 id="如何判断任务的优先级？"><a href="#如何判断任务的优先级？" class="headerlink" title="如何判断任务的优先级？"></a>如何判断任务的优先级？</h2><p>应该是浏览器控制的吧，一帧内任务还没有执行完，控制权就交给浏览器去分配。</p>
+<h2 id="浏览器一帧内要做那些事情？"><a href="#浏览器一帧内要做那些事情？" class="headerlink" title="浏览器一帧内要做那些事情？"></a>浏览器一帧内要做那些事情？</h2><p>layout布局、绘制、执行 js、requestAnimationFrame</p>
+<p>如果一帧内执行完了这些事情，剩余的时间，就用来执行 <code>requestIdleCallback</code></p>
+<h2 id="一帧是多少-ms-？以-60-Hz-为例"><a href="#一帧是多少-ms-？以-60-Hz-为例" class="headerlink" title="一帧是多少 ms ？以 60 Hz 为例"></a>一帧是多少 ms ？以 60 Hz 为例</h2><p>每秒 60帧，每帧就是 1000/60 = 16.7ms</p>
+<h2 id="requestIdleCallback-callback-options"><a href="#requestIdleCallback-callback-options" class="headerlink" title="requestIdleCallback(callback, options)"></a>requestIdleCallback(callback, options)</h2><p>window.requestIdleCallback() 方法插入一个函数，<code>这个函数将在浏览器空闲时期被调用</code>。这使开发者能够在主事件循环上执行后台和低优先级工作，而不会影响延迟关键事件，如动画和输入响应。</p>
+<p><code>判断一帧内是否还有剩余时间，有的话，就用来执行 requestIdleCallback</code></p>
+<p>requestIdleCallback 返回一个 ID，<code>可以把它传入 Window.cancelIdleCallback() 方法来结束回调。</code></p>
+<h1 id="React-如何做权限控制？"><a href="#React-如何做权限控制？" class="headerlink" title="React 如何做权限控制？"></a>React 如何做权限控制？</h1><blockquote>
+<p>Vue 中可以通过指令来做 v-auth</p>
+</blockquote>
+<p>比如某个用户登录了之后，根据当前用户的角色来控制页面的显隐，以及对按钮的显隐控制？</p>
+<p>在 React 中进行权限控制可以采用以下几种方式：</p>
+<ol>
+<li>条件渲染（Conditional Rendering）：根据用户的角色或权限，通过条件判断来决定是否渲染某个组件或元素。例如，可以在组件的 <code>render</code> 方法中根据用户角色来判断是否显示某个特定的组件或元素。</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> &#123; user &#125; = <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      &#123;user.isAdmin &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">AdminPanel</span> /&gt;</span>&#125;</span><br><span class="language-xml">      &#123;user.isLoggedIn &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">UserProfile</span> /&gt;</span>&#125;</span><br><span class="language-xml">      &#123;user.hasPermission(&#x27;edit&#x27;) &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">EditButton</span> /&gt;</span>&#125;</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>高阶组件（Higher-Order Components）：通过创建高阶组件来封装权限控制的逻辑。高阶组件接受一个组件作为参数，并返回一个新的组件，新组件根据用户的角色或权限来决定渲染或包装传入的组件。</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> <span class="hljs-title function_">withAuthorization</span> = (<span class="hljs-params">WrappedComponent, allowedRoles</span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">extends</span> <span class="hljs-title class_">React</span>.<span class="hljs-property">Component</span> &#123;<br>    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-keyword">const</span> &#123; user &#125; = <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>;<br>      <span class="hljs-keyword">if</span> (!user || !allowedRoles.<span class="hljs-title function_">includes</span>(user.<span class="hljs-property">role</span>)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; <span class="hljs-comment">// 不满足权限要求，返回空</span><br>      &#125;<br>      <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">WrappedComponent</span> &#123;<span class="hljs-attr">...this.props</span>&#125; /&gt;</span></span>;<br>    &#125;<br>  &#125;;<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">AdminPanel</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-comment">// 管理员面板组件</span><br>  <span class="hljs-comment">// ...</span><br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">AuthorizedAdminPanel</span> = <span class="hljs-title function_">withAuthorization</span>(<span class="hljs-title class_">AdminPanel</span>, [<span class="hljs-string">&#x27;admin&#x27;</span>]);<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>权限控制组件（Authorization Component）：创建一个专门用于权限控制的组件，该组件在渲染过程中进行权限检查，并根据结果来决定如何渲染子组件。该组件可以通过 React 的上下文（context）来传递用户信息和权限信息。</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> <span class="hljs-title function_">Authorization</span> = (<span class="hljs-params">&#123; allowedRoles, user, children &#125;</span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (!user || !allowedRoles.<span class="hljs-title function_">includes</span>(user.<span class="hljs-property">role</span>)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; <span class="hljs-comment">// 不满足权限要求，返回空</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span>&gt;</span>&#123;children&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span></span>;<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">App</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-comment">// 用户信息和权限信息</span><br>  <span class="hljs-keyword">const</span> user = &#123;<br>    <span class="hljs-attr">role</span>: <span class="hljs-string">&#x27;admin&#x27;</span>,<br>    <span class="hljs-comment">// ...</span><br>  &#125;;<br><br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to the App<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Authorization</span> <span class="hljs-attr">allowedRoles</span>=<span class="hljs-string">&#123;[</span>&#x27;<span class="hljs-attr">admin</span>&#x27;]&#125; <span class="hljs-attr">user</span>=<span class="hljs-string">&#123;user&#125;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">AdminPanel</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Authorization</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Authorization</span> <span class="hljs-attr">allowedRoles</span>=<span class="hljs-string">&#123;[</span>&#x27;<span class="hljs-attr">user</span>&#x27;]&#125; <span class="hljs-attr">user</span>=<span class="hljs-string">&#123;user&#125;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">UserProfile</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Authorization</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Authorization</span> <span class="hljs-attr">allowedRoles</span>=<span class="hljs-string">&#123;[</span>&#x27;<span class="hljs-attr">admin</span>&#x27;, &#x27;<span class="hljs-attr">editor</span>&#x27;]&#125; <span class="hljs-attr">user</span>=<span class="hljs-string">&#123;user&#125;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">EditButton</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Authorization</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>这些方法都可以根据用户的角色或权限来进行页面的显隐控制和按钮的显隐控制。具体使用哪种方法取决于你的项目需求和组件结构，选择最适合的方式进行权限控制。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zh-hans.legacy.reactjs.org/">React 老文档</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>

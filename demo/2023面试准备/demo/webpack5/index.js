@@ -1,16 +1,23 @@
 import './hrm.js'
-
 import './test.css'
-import './test.scss'
-
+import('./test.scss')
 import imgSrc from '../../img/babel.jpg'
+import './another-module.js'
+import _ from 'lodash'
+import obj from './test1.js'
+import dotMeContent from './custom-file/say.me'
 
-import('./test').then(module => {
+console.log('🔥', dotMeContent)
+
+obj.count++
+
+import(/* webpackChunkName: "dynamic-test" */ './test').then(module => {
   module.default()  
 })
 
-import('./test1.js')
+import sourceText from './test.txt'
 
+console.log('sourceText ', sourceText)
 
 window.onload = function() {
   const imgDom = `<img src="${imgSrc}"/>`
@@ -20,9 +27,6 @@ window.onload = function() {
   img.innerHTML = imgDom
 }
 
-console.log('------ index.js console-🔥-------', isMe, env)
-
 if (module.hot) {
   module.hot.accept()
 }
-

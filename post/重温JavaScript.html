@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/img/js.jpg">
 <meta property="article:published_time" content="2023-05-12T10:55:02.000Z">
-<meta property="article:modified_time" content="2023-05-25T12:41:36.662Z">
+<meta property="article:modified_time" content="2023-07-03T02:59:36.168Z">
 <meta property="article:author" content="Hello_AlexCc">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      26k 字
+      27k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      221 分钟
+      223 分钟
     </span>
   
 
@@ -491,6 +491,8 @@
 <h2 id="原型与继承的关系"><a href="#原型与继承的关系" class="headerlink" title="原型与继承的关系"></a>原型与继承的关系</h2><p>原型与实例的关系可以通过<code>两种</code>方式来确定。</p>
 <p>第一种方式是使用<code>instanceof操作符</code>，<strong>如果一个实例的原型链中出现过相应的构造函数，则instanceof返回true</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">o <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span> <span class="hljs-comment">// true 实例的原型链中出现过相应的构造函数</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">instance_of</span>(<span class="hljs-params">instance, obj</span>) &#123;<br>  <span class="hljs-keyword">let</span> prototype = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(instance)<br><br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    <span class="hljs-keyword">if</span> (prototype === <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br><br>    <span class="hljs-keyword">if</span> (prototype === obj.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    &#125;<br><br>    prototype = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(prototype)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>第二种方式是使用<code>isPrototypeOf()</code>方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-title function_">isPrototypeOf</span>(o)<br></code></pre></td></tr></table></figure>

@@ -16,16 +16,17 @@
   <meta name="author" content="Hello_AlexCc">
   <meta name="keywords" content="Full stack engineer">
   
-    <meta name="description" content="如何理解 MVVM Model–view–viewmodel    数据驱动视图。 修改 Model 的数据（plain objects），Vue 的 ViewModel 会帮我们处理数据、监听数据变化等，异步渲染、更新 DOM。避免了我们手动去操作 DOM。 如何理解 ViewModel ？ 在 Vue 中， ViewModel 代表 Vue 提供的底层能力，比如事件的处理、响应式系统等，它是作">
+    <meta name="description" content="如何理解 MVVM Model–view–viewmodel   数据驱动视图。  修改 Model 的数据（plain objects），Vue 的 ViewModel 会帮我们处理数据、监听数据变化等，异步渲染、更新 DOM。避免了我们手动去操作 DOM。 如何理解 ViewModel ？ 在 Vue 中， ViewModel 代表 Vue 提供的底层能力，比如事件的处理、响应式系统等，它是作">
 <meta property="og:type" content="website">
 <meta property="og:title" content="page.title">
 <meta property="og:url" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Vue2&Vue3%E5%8E%9F%E7%90%86.html">
 <meta property="og:site_name" content="Hello_AlexCc">
-<meta property="og:description" content="如何理解 MVVM Model–view–viewmodel    数据驱动视图。 修改 Model 的数据（plain objects），Vue 的 ViewModel 会帮我们处理数据、监听数据变化等，异步渲染、更新 DOM。避免了我们手动去操作 DOM。 如何理解 ViewModel ？ 在 Vue 中， ViewModel 代表 Vue 提供的底层能力，比如事件的处理、响应式系统等，它是作">
+<meta property="og:description" content="如何理解 MVVM Model–view–viewmodel   数据驱动视图。  修改 Model 的数据（plain objects），Vue 的 ViewModel 会帮我们处理数据、监听数据变化等，异步渲染、更新 DOM。避免了我们手动去操作 DOM。 如何理解 ViewModel ？ 在 Vue 中， ViewModel 代表 Vue 提供的底层能力，比如事件的处理、响应式系统等，它是作">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/img/mvvm.jpg">
-<meta property="article:published_time" content="2023-05-15T12:39:29.777Z">
-<meta property="article:modified_time" content="2023-05-15T12:39:29.777Z">
+<meta property="og:image" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/img/vue-lifecycle.png">
+<meta property="article:published_time" content="2023-07-03T03:03:02.082Z">
+<meta property="article:modified_time" content="2023-07-03T03:03:02.082Z">
 <meta property="article:author" content="Hello_AlexCc">
 <meta property="article:tag" content="Full stack engineer">
 <meta name="twitter:card" content="summary_large_image">
@@ -207,8 +208,8 @@
 <p>Model–view–viewmodel</p>
 </blockquote>
 <img src="./img/mvvm.jpg" srcset="/img/loading.gif" lazyload />
+数据驱动视图。
 
-<p>数据驱动视图。</p>
 <p>修改 Model 的数据（plain objects），Vue 的 ViewModel 会帮我们处理数据、监听数据变化等，异步渲染、更新 DOM。避免了我们手动去操作 DOM。</p>
 <p>如何理解 ViewModel ？</p>
 <p>在 Vue 中， ViewModel 代表 Vue 提供的底层能力，比如事件的处理、响应式系统等，它是作为 View 层和 Model 层的桥梁，View 和 Model 之间的同步工作，都是自动的。</p>
@@ -218,6 +219,8 @@
 <p>MVVM实现了View和Model的自动同步，当Model的属性改变时，不再需要自己手动操作DOM元素，提高了页面渲染性能。</p>
 <p>在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的。</p>
 <p><strong>View 可以通过 ViewModel 中<code>事件绑定</code> 的方式影响 Model，Model 可以通过 ViewModel 中 <code>数据绑定</code> 的方式去影响 View。</strong></p>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><img src="./img/vue-lifecycle.png" srcset="/img/loading.gif" lazyload />
+
 <h1 id="Vue-三要素"><a href="#Vue-三要素" class="headerlink" title="Vue 三要素"></a>Vue 三要素</h1><ul>
 <li><p>响应式</p>
 <p>Vue 如何监听到 data 的每个属性变化</p>
