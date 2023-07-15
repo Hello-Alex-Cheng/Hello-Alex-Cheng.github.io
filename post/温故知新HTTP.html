@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/img/tcp-connect.jpg">
 <meta property="article:published_time" content="2023-05-28T08:37:15.000Z">
-<meta property="article:modified_time" content="2023-07-03T03:00:05.757Z">
+<meta property="article:modified_time" content="2023-07-07T08:18:06.886Z">
 <meta property="article:author" content="Hello_AlexCc">
 <meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      28k 字
+      29k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      232 分钟
+      241 分钟
     </span>
   
 
@@ -582,6 +582,30 @@
 <p>以下 cookie中，age 会在 5s 后过期，也就是说过了 5s 再发请求，请求头中不会携带 age 信息了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>, &#123;<br>  <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;text/javascript&#x27;</span>,<br>  <span class="hljs-string">&#x27;Set-Cookie&#x27;</span>: [<span class="hljs-string">&#x27;age=18; max-age=5&#x27;</span>, <span class="hljs-string">&#x27;name=alex.cheng&#x27;</span>]<br>&#125;)<br>res.<span class="hljs-title function_">end</span>(<span class="hljs-string">&#x27;console.log(&quot;Javascript loaded!!!&quot;)&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
+<h2 id="Http-Only-sameSite-domain"><a href="#Http-Only-sameSite-domain" class="headerlink" title="Http-Only sameSite domain"></a>Http-Only sameSite domain</h2><p><code>Http-Only</code>、<code>SameSite</code>和<code>Domain</code>是用于设置和控制浏览器中的 Cookie 的属性。它们的作用和区别如下：</p>
+<ol>
+<li><p><code>Http-Only</code>: <code>Http-Only</code> 是一个 Cookie 属性，用于限制客户端（浏览器）脚本访问 Cookie 的能力。当设置为 <code>Http-Only</code> 时，浏览器只会在进行 HTTP 请求时自动发送 Cookie，而不允许通过 JavaScript 访问 Cookie。这可以提高应用程序的安全性，防止跨站点脚本攻击（XSS）。</p>
+</li>
+<li><p><code>SameSite</code>: <code>SameSite</code> 是一个 Cookie 属性，用于控制浏览器在发送跨站点请求时是否附带 Cookie。它有以下几个可选值：</p>
+<ul>
+<li><code>Strict</code>: 当设置为 <code>Strict</code> 时，浏览器仅在目标网站与源网站完全相同的情况下，才会在跨站点请求中附带 Cookie。这有助于防止跨站点请求伪造（CSRF）攻击。</li>
+<li><code>Lax</code>: 当设置为 <code>Lax</code> 时，浏览器将在顶级导航（例如通过链接点击）以及 GET 方法提交的表单请求中附带 Cookie。对于 POST、PUT、DELETE 等非安全方法的请求，以及跨域的 AJAX 请求，不会附带 Cookie。这是默认的 <code>SameSite</code> 值。</li>
+<li><code>None</code>: 当设置为 <code>None</code> 时，浏览器会在所有跨站点请求中都附带 Cookie。但为了安全考虑，还需要同时设置 <code>Secure</code> 属性，表示只有在通过 HTTPS 连接发送请求时才会附带 Cookie。</li>
+</ul>
+</li>
+<li><p><code>Domain</code>: <code>Domain</code> 是一个 Cookie 属性，用于指定可以访问该 Cookie 的域名。默认情况下，Cookie 的 <code>Domain</code> 属性与当前页面的域名相同。通过设置 <code>Domain</code> 属性，可以使 Cookie 在多个子域名之间共享，或者限制 Cookie 的作用域。例如，设置 <code>Domain</code> 为 “.example.com” 可以使 Cookie 在所有以 “.example.com” 结尾的子域名下都可访问。</p>
+</li>
+</ol>
+<blockquote>
+<p>域名的级别是从后往前算的，比如 <code>.example.com</code> 是一级域名，<code>a.example.com</code> 则是二级域名，二级域名可以访问一级域名中的 cookie，但是反过来不行。</p>
+</blockquote>
+<p>总结：</p>
+<ul>
+<li><code>Http-Only</code> 限制了客户端脚本对 Cookie 的访问，提高安全性。</li>
+<li><code>SameSite</code> 控制了在跨站点请求中是否附带 Cookie，防止 CSRF 攻击。</li>
+<li><code>Domain</code> 指定了可以访问该 Cookie 的域名，可以实现跨子域的共享或限制作用域。</li>
+</ul>
+<p>这些属性的使用可以根据具体的需求和安全考虑进行配置。</p>
 <h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>Session（会话）是指在客户端与服务器之间建立的一种状态管理机制。</p>
 <p>它用于跟踪和存储特定用户在一段时间内的相关信息。在Web应用程序中，会话通常用于在用户访问不同页面或发送请求时保持用户的身份验证状态和其他会话数据。</p>
 <p><code>也就是说，我们只要能在服务器定位到特定的用户，然后拿到对应的 cookie 信息，那就是 session 的实现方案。</code></p>

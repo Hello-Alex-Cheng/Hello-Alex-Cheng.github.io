@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/img/vite.png">
 <meta property="article:published_time" content="2023-07-02T14:25:44.000Z">
-<meta property="article:modified_time" content="2023-07-05T01:59:49.985Z">
+<meta property="article:modified_time" content="2023-07-15T08:55:40.324Z">
 <meta property="article:author" content="Hello_AlexCc">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3k 字
+      6.4k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26 分钟
+      54 分钟
     </span>
   
 
@@ -240,8 +240,8 @@
             <h1 style="display: none">深入浅出 Vite</h1>
             
             <div class="markdown-body">
-              <h1 id="vite-官网"><a href="#vite-官网" class="headerlink" title="vite 官网"></a>vite 官网</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://cn.vitejs.dev/">https://cn.vitejs.dev/</a></p>
+              <h1 id="vite"><a href="#vite" class="headerlink" title="vite"></a><a target="_blank" rel="noopener" href="https://cn.vitejs.dev/">vite</a></h1><blockquote>
+<p>Vite 需要 Node.js 版本 14.18+，16+。</p>
 </blockquote>
 <p>由两部分组成：</p>
 <ol>
@@ -274,7 +274,7 @@
 </ol>
 <p>可以通过安装 <code>lodash-es</code> 这个包来做个实验，在项目中导入 <code>lodash-es</code>，你会发现 vite 对它进行了修改，将所有导出的模块整合成了一个 <code>js</code> 文件，浏览器也只会发送一次 HTTP 请求。</p>
 <p><code>lodash-es</code> 导出的所有定义好的模块方法</p>
-<img src='/img/lodash-es-export.png' />
+<img src='../img/lodash-es-export.png' />
 
 <p>启动项目，Vite 已经整合所有 <code>lodash-es</code> 导出的模块</p>
 <p>HTTP请求：<code>/node_modules/.vite/deps/lodash-es.js?v=4db083fa</code></p>
@@ -284,7 +284,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// vite.config.js</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">optimizeDeps</span>: &#123;<br>    <span class="hljs-attr">exclude</span>: [<span class="hljs-string">&#x27;lodash-es&#x27;</span>]<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>重启服务后，你会发现浏览器发送了很多个 HTTP 请求去加载 <code>lodash-es</code> 导出的每个模块方法。</p>
-<img src='/img/vite-optimizeDeps-exclude.png' />
+<img src='../img/vite-optimizeDeps-exclude.png' />
 
 <h1 id="vite为什么快？"><a href="#vite为什么快？" class="headerlink" title="vite为什么快？"></a>vite为什么快？</h1><ol>
 <li><p>开发环境不打包(<code>Vite 以 原生 ESM 方式提供源码</code>)，目前主流的浏览器已经支持模块化了。<code>&lt;script type=&quot;module&quot; src=&quot;...&quot;&gt;</code></p>
@@ -304,9 +304,52 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/** <span class="hljs-doctag">@type</span> import(&quot;vite&quot;).UserConfig */</span><br><span class="hljs-keyword">const</span> viteConfig = &#123;<br>  <span class="hljs-attr">optimizeDeps</span>: &#123;<br>    <span class="hljs-attr">exclude</span>: [<span class="hljs-string">&#x27;lodash-es&#x27;</span>],<br>  &#125;,<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> viteConfig<br></code></pre></td></tr></table></figure>
 
 <p><code>defineConfig</code> 也可以接收一个函数作为参数，这个函数也有一个参数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-attr">command</span>: <span class="hljs-string">&quot;serve&quot;</span>, <span class="hljs-comment">// &quot;build&quot; or &quot;serve&quot;</span><br>  <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;development&quot;</span>,<br>  <span class="hljs-attr">ssrBuild</span>: <span class="hljs-literal">false</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">&#123;</span></span><br><span class="hljs-params"><span class="hljs-function">  command: <span class="hljs-string">&quot;serve&quot;</span>, // <span class="hljs-string">&quot;build&quot;</span> or <span class="hljs-string">&quot;serve&quot;</span></span></span><br><span class="hljs-params"><span class="hljs-function">  mode: <span class="hljs-string">&quot;development&quot;</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">  ssrBuild: <span class="hljs-literal">false</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">&#125;</span>) =&gt;</span> &#123;<br>  ...<br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>我们可以通过 <code>command</code> 或者 <code>mode</code> 来执行不同环境的配置。</p>
+<h2 id="区分打包配置"><a href="#区分打包配置" class="headerlink" title="区分打包配置"></a>区分打包配置</h2><p>我们可以根据不同环境，编写不同的配置文件 <code>vite.base.config</code>、<code>vite.dev.config</code>、<code>vite.prod.config</code>。</p>
+<p>vite.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">const</span> env = &#123;<br>  <span class="hljs-string">&#x27;serve&#x27;</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123;&#125;, vite.<span class="hljs-property">base</span>.<span class="hljs-property">config</span>, vite.<span class="hljs-property">dev</span>.<span class="hljs-property">config</span>),<br>  <span class="hljs-string">&#x27;build&#x27;</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123;&#125;, vite.<span class="hljs-property">base</span>.<span class="hljs-property">config</span>, vite.<span class="hljs-property">prod</span>.<span class="hljs-property">config</span>),<br>&#125;<br><br><span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">&#123; command: <span class="hljs-string">&quot;serve&quot;</span> &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> env[serve]()<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h1 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h1><p>Vite 使用 <code>dotenv</code> 从你的 环境目录 中的下列文件加载额外的环境变量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">.<span class="hljs-property">env</span>                # 所有情况下都会加载<br>.<span class="hljs-property">env</span>.<span class="hljs-property">local</span>          # 所有情况下都会加载，但会被 git 忽略<br>.<span class="hljs-property">env</span>.[mode]         # 只在指定模式下加载<br>.<span class="hljs-property">env</span>.[mode].<span class="hljs-property">local</span>   # 只在指定模式下加载，但会被 git 忽略<br></code></pre></td></tr></table></figure>
+
+<p>在 <code>vite.config.js</code> 中，想要获取配置的环境变量，我们需要通过如下形式获取:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 读取指定的环境变量</span><br>  <span class="hljs-keyword">const</span> env = <span class="hljs-title function_">loadEnv</span>(options.<span class="hljs-property">mode</span>, process.<span class="hljs-title function_">cwd</span>(), <span class="hljs-string">&#x27;&#x27;</span>)<br><br>  <span class="hljs-comment">// ...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><code>options.mode</code> 可以通过 <code>yarn dev --mode develop</code> 指定。</p>
+<p><code>process.cwd()</code> 表示当前文件的 <code>执行目录</code></p>
+<p><code>loadEnv</code> 第三个参数是 <code>prefixs</code>，环境变量的前缀，默认是 <code>VITE_</code>，<code>默认情况下只有前缀为 VITE_ 会被加载，除非更改了 prefixes 配置。</code></p>
+<h2 id="在客户端获取环境变量"><a href="#在客户端获取环境变量" class="headerlink" title="在客户端获取环境变量"></a>在客户端获取环境变量</h2><p>配置的环境变量会存放到 <code>import.meta.env</code> 中。</p>
+<p><code>为了防止意外地将一些环境变量泄漏到客户端，只有以 VITE_ 为前缀的变量才会暴露给经过 vite 处理的代码。</code></p>
+<h2 id="修改默认的环境变量前缀"><a href="#修改默认的环境变量前缀" class="headerlink" title="修改默认的环境变量前缀"></a>修改默认的环境变量前缀</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> &#123;<br>  <br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-comment">// ..</span><br>    <span class="hljs-attr">envPrefix</span>: <span class="hljs-string">&#x27;ENV_&#x27;</span> <span class="hljs-comment">// 默认是 `VITE_`</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="增加测试环境"><a href="#增加测试环境" class="headerlink" title="增加测试环境"></a>增加测试环境</h2><p>package.json</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>  <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;vite --mode test&quot;</span>,<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<p>添加 <code>.env.test</code> 文件，写入测试环境的配置即可。</p>
+<h1 id="Vite-如何执行-vue-文件"><a href="#Vite-如何执行-vue-文件" class="headerlink" title="Vite 如何执行 .vue 文件"></a>Vite 如何执行 <code>.vue</code> 文件</h1><p>Vite 是一个开发服务器，以项目最外层的 <code>index.html</code> 为入口文件。当它遇到 <code>.js</code> 文件结尾的文件，会去开发服务器请求这个 js 文件。并且告诉浏览器以 <code>Content-Type: text/javascript</code> 去解析这个文件。</p>
+<p>如果遇到是 <code>.vue</code> 文件，首先会在开发服务器解析 <code>vue</code> 文件，将 <code>vue</code> 文件的内容转化为 <code>js</code> 内容，虽然它是 <code>.vue</code> 结尾的文件，我们还是可以通过 <code>Content-Type: text/javascript</code> 告诉浏览器使用 <code>js</code> 的形式去解析执行文件。</p>
+<p>假设 Vite 开发服务器如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();<br><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-keyword">async</span> (ctx) =&gt; &#123;<br>    <span class="hljs-keyword">if</span> (ctx.<span class="hljs-property">request</span>.<span class="hljs-property">url</span> === <span class="hljs-string">&quot;/&quot;</span>) &#123;<br>        <span class="hljs-keyword">const</span> indexContent = <span class="hljs-keyword">await</span> fs.<span class="hljs-property">promises</span>.<span class="hljs-title function_">readFile</span>(path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;./index.html&quot;</span>));<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;text/html&quot;</span>);<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">body</span> = indexContent;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (ctx.<span class="hljs-property">request</span>.<span class="hljs-property">url</span> === <span class="hljs-string">&quot;/App.vue&quot;</span>) &#123;<br>        <span class="hljs-keyword">const</span> <span class="hljs-title class_">AppContent</span> = <span class="hljs-keyword">await</span> fs.<span class="hljs-property">promises</span>.<span class="hljs-title function_">readFile</span>(path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;./App.vue&quot;</span>));<br><br>        <span class="hljs-comment">// 对 .vue 文件做一系列解析操作，将其内容转为纯 js 内容</span><br>        <span class="hljs-comment">//...</span><br><br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;text/javascript&quot;</span>);<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">body</span> = <span class="hljs-title class_">AppContent</span>;<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h1 id="css-modules"><a href="#css-modules" class="headerlink" title="css modules"></a>css modules</h1><p>任何以 .module.css 为后缀名的 CSS 文件都被认为是一个 CSS modules 文件。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* example.module.css */</span><br><span class="hljs-selector-class">.red</span> &#123;<br>  <span class="hljs-attribute">color</span>: red;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> classes <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./example.module.css&#x27;</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;foo&#x27;</span>).<span class="hljs-property">className</span> = classes.<span class="hljs-property">red</span><br></code></pre></td></tr></table></figure>
+
+<p>CSS modules 行为可以通过 css.modules 选项 进行配置。</p>
+<p>如果 <code>css.modules.localsConvention</code> 设置开启了 camelCase 格式变量名转换（例如 localsConvention: ‘camelCaseOnly’），你还可以使用按名导入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// .apply-color -&gt; applyColor</span><br><span class="hljs-keyword">import</span> &#123; applyColor &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./example.module.css&#x27;</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;foo&#x27;</span>).<span class="hljs-property">className</span> = applyColor<br></code></pre></td></tr></table></figure>
+
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在 Vite 开发服务器中，遇到了 <code>.module.css</code> 结尾的文件，通过一定的规则将<code>类名</code>进行替换，比如 <code>.red</code> 替换成 <code>._red_hjlk23_1</code></p>
+<p>并创建一个映射对象 <code>&#123; red: &#39;_red_hjlk23_1&#39; &#125;</code></p>
+<p>将替换过后的内容，塞进动态创建的<code>style</code> 标签里，并且插入到 <code>head</code> 中</p>
+<p>将 <code>.module.css</code> 结尾的内容全部替换成 <code>js</code> 内容，方便 <code>热更新</code></p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><p>css.modules</p>
+<p><code>配置 CSS modules 的行为。选项将被传递给 postcss-modules。</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js">interface <span class="hljs-title class_">CSSModulesOptions</span> &#123;<br>  scopeBehaviour?: <span class="hljs-string">&#x27;global&#x27;</span> | <span class="hljs-string">&#x27;local&#x27;</span> <span class="hljs-comment">// 如果是 global，则不会产生模块化的 css</span><br>  globalModulePaths?: <span class="hljs-title class_">RegExp</span>[]<br>  generateScopedName?: <span class="hljs-comment">// 配置模块化 css 名字的格式，比如 `[name]_[local]_[hash:5]`</span><br>    | string<br>    | (<span class="hljs-function">(<span class="hljs-params">name: string, filename: string, css: string</span>) =&gt;</span> string)<br>  hashPrefix?: string<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 默认：null</span><br><span class="hljs-comment">   */</span><br>  localsConvention?:<br>    | <span class="hljs-string">&#x27;camelCase&#x27;</span> <span class="hljs-comment">// 展示驼峰式和横杠</span><br>    | <span class="hljs-string">&#x27;camelCaseOnly&#x27;</span> <span class="hljs-comment">// 只展示驼峰式</span><br>    | <span class="hljs-string">&#x27;dashes&#x27;</span> <span class="hljs-comment">// 横杠</span><br>    | <span class="hljs-string">&#x27;dashesOnly&#x27;</span> <span class="hljs-comment">// 只展示横杠</span><br>    | <span class="hljs-literal">null</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -333,6 +376,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/post/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E6%96%B9%E5%BC%8F.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">内存泄漏排查方式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

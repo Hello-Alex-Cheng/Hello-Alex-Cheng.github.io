@@ -28,8 +28,8 @@
 <meta property="og:image" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/img/dom.getBoundingClientRect.png">
 <meta property="og:image" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/img/flex-shrink.png">
 <meta property="og:image" content="http://yoursite.com/demo/2023%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/img/position-sticky.gif">
-<meta property="article:published_time" content="2023-07-03T03:03:02.084Z">
-<meta property="article:modified_time" content="2023-07-03T03:03:02.084Z">
+<meta property="article:published_time" content="2023-07-07T08:00:14.054Z">
+<meta property="article:modified_time" content="2023-07-07T08:00:14.054Z">
 <meta property="article:author" content="Hello_AlexCc">
 <meta property="article:tag" content="Full stack engineer">
 <meta name="twitter:card" content="summary_large_image">
@@ -436,6 +436,8 @@
 <p>c2 设置的 50vw，它是相对于视口的，所以宽度和父元素宽度一样，不会被父元素影响。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;c1&quot;</span>&gt;</span><br>      c1<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;c2&quot;</span>&gt;</span><br>      c2<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css"></span><br><span class="language-css">  <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="language-css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;</span><br><span class="language-css">    <span class="hljs-attribute">background</span>: blue;</span><br><span class="language-css">  &#125;</span><br><span class="language-css">  </span><br><span class="language-css">  <span class="hljs-selector-class">.c1</span> &#123;</span><br><span class="language-css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;</span><br><span class="language-css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="language-css">    <span class="hljs-attribute">background</span>: red;</span><br><span class="language-css">  &#125;</span><br><span class="language-css">  <span class="hljs-selector-class">.c2</span> &#123;</span><br><span class="language-css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">50vw</span>;</span><br><span class="language-css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="language-css">    <span class="hljs-attribute">background</span>: yellow;</span><br><span class="language-css">  &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
+<h1 id="rem-em-vw-vh"><a href="#rem-em-vw-vh" class="headerlink" title="rem em vw vh %"></a>rem em vw vh %</h1><p>vw、vh 是相对于视口的，比如说 <code>50vh</code>，就是占据屏幕一般的高度</p>
+<p>rem 是根据根元素（html）的 <code>font-size</code> 来设置大小，而 <code>em、%</code>是根据父元素来设置大小</p>
 <h1 id="如何让-chrome-浏览器显示更小的字体（默认最小-12px）"><a href="#如何让-chrome-浏览器显示更小的字体（默认最小-12px）" class="headerlink" title="如何让 chrome 浏览器显示更小的字体（默认最小 12px）"></a>如何让 chrome 浏览器显示更小的字体（默认最小 12px）</h1><ul>
 <li>zoom: 0.5;</li>
 </ul>
@@ -444,6 +446,29 @@
 <li>transform: scale(0.5)</li>
 </ul>
 <p>支持块级元素，不支持行内元素</p>
+<ul>
+<li>使用 rem</li>
+</ul>
+<p>给根组件设置指定的 <code>font-size</code>，其他元素的单位使用 <code>rem</code> 作为单位</p>
+<h1 id="移动端适配：使用-rem-作为单位，如何自动将-px-转为-rem-单位"><a href="#移动端适配：使用-rem-作为单位，如何自动将-px-转为-rem-单位" class="headerlink" title="移动端适配：使用 rem 作为单位，如何自动将 px 转为 rem 单位?"></a>移动端适配：使用 rem 作为单位，如何自动将 px 转为 rem 单位?</h1><p>比如我们的跟标签设置了 <code>font-size</code> 为 16px（浏览器默认），那么 1rem 就是 <code>16px</code>。</p>
+<p>假设我想给某一个元素设置 <code>12px</code> 大小的 <code>font-size</code>，我们可以通过 <code>16 / 12 = 1.333</code>，那么这个 <code>font-size</code> 就可以设置为 <code>1.333rem</code>。</p>
+<p>但是问题来了，页面上有很多元素都要设置大小，它们的 <code>px</code> 大多都不一样，我们每次都要手动计算吗？</p>
+<p>这时，我们就可以使用 <code>postcss</code> 的一个插件 <code>postcss-rem</code></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/postcss-rem">https://www.npmjs.com/package/postcss-rem</a></p>
+</blockquote>
+<p>编写 css 时可以这样写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.demo</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">rem</span>(<span class="hljs-number">24px</span>); <span class="hljs-comment">/* Simple */</span><br>  <span class="hljs-attribute">padding</span>: <span class="hljs-built_in">rem</span>(<span class="hljs-number">5px</span> <span class="hljs-number">10px</span>); <span class="hljs-comment">/* Multiple values */</span><br>  <span class="hljs-attribute">margin</span>: <span class="hljs-built_in">rem</span>(<span class="hljs-number">10px</span> <span class="hljs-number">0.5rem</span>); <span class="hljs-comment">/* Existing rem */</span><br>  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-built_in">rem</span>(<span class="hljs-number">1px</span> solid black); <span class="hljs-comment">/* Multiple mixed values */</span><br>  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-built_in">rem</span>(<br>    <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">#ccc</span>,<br>    inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">#eee</span><br>  ); <span class="hljs-comment">/* Comma-separated values */</span><br>  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-built_in">rem</span>(<span class="hljs-number">1px</span> <span class="hljs-number">1px</span>) <span class="hljs-number">#eee</span>, <span class="hljs-built_in">rem</span>(-<span class="hljs-number">1px</span>) <span class="hljs-number">0</span> <span class="hljs-number">#eee</span>; <span class="hljs-comment">/* Alternate use */</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>postcss-rem</code> 自动帮我们计算了，输出的结果是：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.demo</span> &#123;<br>  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5rem</span>; <span class="hljs-comment">/* Simple */</span><br>  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.3125rem</span> <span class="hljs-number">0.625rem</span>; <span class="hljs-comment">/* Multiple values */</span><br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0.625rem</span> <span class="hljs-number">0.5rem</span>; <span class="hljs-comment">/* Existing rem */</span><br>  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">0.0625rem</span> solid black; <span class="hljs-comment">/* Multiple mixed values */</span><br>  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.125rem</span> <span class="hljs-number">#ccc</span>, inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3125rem</span> <span class="hljs-number">#eee</span>; <span class="hljs-comment">/* Comma-separated values */</span><br>  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">0.0625rem</span> <span class="hljs-number">0.0625rem</span> <span class="hljs-number">#eee</span>, -<span class="hljs-number">0.0625rem</span> <span class="hljs-number">0</span> <span class="hljs-number">#eee</span>; <span class="hljs-comment">/* Alternate use */</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>具体用法</code></p>
+<p>安装 <code>yarn add postcss-rem -D</code></p>
+<p>配置 <code>postcss</code>，以 <code>vite.config.js</code> 为例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">PostcssRem</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;postcss-rem&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>  ...<br><br>  <span class="hljs-attr">css</span>: &#123;<br>    <span class="hljs-attr">postcss</span>: &#123;<br>      <span class="hljs-attr">plugins</span>: [<span class="hljs-title class_">PostcssRem</span>]<br>    &#125;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>配置完后，我们在写 css 时就可以直接使用 <code>rem方法</code> 自动将 <code>px</code> 转为 <code>rem</code> 了。</p>
 <h1 id="block、inline、inline-block-有什么区别"><a href="#block、inline、inline-block-有什么区别" class="headerlink" title="block、inline、inline-block 有什么区别"></a>block、inline、inline-block 有什么区别</h1><ol>
 <li><p>block元素为块级元素，独占一行，对其设置宽高属性会生效，如果不设置宽度，默认宽度为 100%</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">div/form/header/ul/canvas/footer/video/audio<br></code></pre></td></tr></table></figure>
@@ -466,7 +491,28 @@
 
 <h1 id="window-scrollY-amp-window-pageYOffset"><a href="#window-scrollY-amp-window-pageYOffset" class="headerlink" title="window.scrollY &amp; window.pageYOffset"></a>window.scrollY &amp; window.pageYOffset</h1><p>window.scrollY: <code>返回文档在垂直方向已滚动的像素值。</code></p>
 <p>window.pageYOffset: <code>只读属性 pageYOffset 是 scrollY 属性的别名</code>。为了跨浏览器兼容，请使用 window.pageYOffset 代替 window.scrollY。另外，旧版本 IE（&lt;9）两个属性都不支持</p>
-<h1 id="element-offsetHeight"><a href="#element-offsetHeight" class="headerlink" title="element.offsetHeight"></a>element.offsetHeight</h1><p><code>offsetHeight</code> 是一个只读属性，它返回该元素的像素高度，<code>高度包含该元素的垂直内边距和边框</code>，且是一个整数。</p>
+<h1 id="目标元素的位置信息"><a href="#目标元素的位置信息" class="headerlink" title="目标元素的位置信息"></a>目标元素的位置信息</h1><ol>
+<li><p>clientWidth：目标元素的width+padding(左右两侧)</p>
+</li>
+<li><p>offsetWidth:目标元素的width+padding(左右两侧)+border(左右两侧)</p>
+<p><code>offsetHeight</code> 是一个只读属性，它返回该元素的像素高度，<code>高度包含该元素的垂直内边距和边框</code>，且是一个整数。</p>
+</li>
+<li><p>clientLeft:目标元素左边框border的宽度</p>
+</li>
+<li><p>offsetLeft:目标元素左边框离其具有定位的父元素之间的距离</p>
+</li>
+<li><p>clientX：鼠标相对于浏览器窗口可视区域的X坐标（横向)</p>
+</li>
+<li><p>offsetX：鼠标相对于绑定事件元素的X坐标</p>
+</li>
+<li><p>pageX：鼠标相对于文档的X坐标，会计算滚动距离；如果没有滚动距离，<br>值与clientX一样</p>
+</li>
+<li><p>screenX：鼠标相对于显示器屏幕左侧的X坐标</p>
+</li>
+<li><p>getBoundingClientRect().left:目标元素左边框相对于浏览器可视区域的距<br>离，可能为负值</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pG4y1W7Td/?spm_id_from=333.337.search-card.all.click&vd_source=a9f38e58a519cc0570c2dacd34ad7ebe">介绍</a></p>
 <h1 id="不用-position-sticky-如何实现吸顶效果"><a href="#不用-position-sticky-如何实现吸顶效果" class="headerlink" title="不用 position sticky 如何实现吸顶效果?"></a>不用 position sticky 如何实现吸顶效果?</h1><p>通过监听 <code>scroll</code>，动态设置需要吸顶元素的样式，通过 <code>position: fixed;</code> 将其固定在顶部。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span><br>    导航栏内容<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
