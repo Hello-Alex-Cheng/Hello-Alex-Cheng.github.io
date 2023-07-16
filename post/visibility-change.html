@@ -16,23 +16,23 @@
   <meta name="author" content="Hello_AlexCc">
   <meta name="keywords" content="Full stack engineer">
   
-    <meta name="description" content="内存泄漏排查方式">
+    <meta name="description" content="切换浏览器 tab 时，通过监听 visibilityChange 事件，可以通过 document.visibilityState 判断当前tab页是否是显示的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存泄漏排查方式">
-<meta property="og:url" content="http://yoursite.com/post/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E6%96%B9%E5%BC%8F.html">
+<meta property="og:title" content="监听浏览器 Tab 切换">
+<meta property="og:url" content="http://yoursite.com/post/visibility-change.html">
 <meta property="og:site_name" content="Hello_AlexCc">
-<meta property="og:description" content="内存泄漏排查方式">
+<meta property="og:description" content="切换浏览器 tab 时，通过监听 visibilityChange 事件，可以通过 document.visibilityState 判断当前tab页是否是显示的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/img/memory-leak.png">
-<meta property="article:published_time" content="2023-07-09T03:20:27.000Z">
-<meta property="article:modified_time" content="2023-07-15T14:21:51.148Z">
+<meta property="og:image" content="http://yoursite.com/img/visibility-change.png">
+<meta property="article:published_time" content="2023-07-16T01:42:33.000Z">
+<meta property="article:modified_time" content="2023-07-16T01:58:57.447Z">
 <meta property="article:author" content="Hello_AlexCc">
-<meta property="article:tag" content="memory-leak">
+<meta property="article:tag" content="visibilityChange document.visibilityState">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://yoursite.com/img/memory-leak.png">
+<meta name="twitter:image" content="http://yoursite.com/img/visibility-change.png">
   
   
-  <title>内存泄漏排查方式 - Hello_AlexCc</title>
+  <title>监听浏览器 Tab 切换 - Hello_AlexCc</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -173,12 +173,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/memory-leak.png') no-repeat center center;
+         style="background: url('/img/visibility-change.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="内存泄漏排查方式">
+            <span class="h2" id="subtitle" title="监听浏览器 Tab 切换">
               
             </span>
 
@@ -188,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-07-09 11:20" pubdate>
-        2023年7月9日 上午
+      <time datetime="2023-07-16 09:42" pubdate>
+        2023年7月16日 上午
       </time>
     </span>
   
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      235 字
+      1.1k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      10 分钟
     </span>
   
 
@@ -237,27 +237,24 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">内存泄漏排查方式</h1>
+            <h1 style="display: none">监听浏览器 Tab 切换</h1>
             
             <div class="markdown-body">
-              <h1 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h1><h1 id="排查方式"><a href="#排查方式" class="headerlink" title="排查方式"></a>排查方式</h1><ol>
-<li>打开Chrome控制台，摁住 <code>command + shift + p</code>，搜索 <code>Run&gt;show performance monitor</code>，主要查看 <code>JS heap size</code></li>
-</ol>
-<img src="../img/show-performance-monitor.png" srcset="/img/loading.gif" lazyload />
+              <h1 id="visibilityChange"><a href="#visibilityChange" class="headerlink" title="visibilityChange"></a>visibilityChange</h1><p>当其选项卡的内容变得可见或被隐藏时，会在文档上触发 visibilitychange (能见度更改) 事件。</p>
+<h1 id="visibilityState"><a href="#visibilityState" class="headerlink" title="visibilityState"></a>visibilityState</h1><p>该事件<code>不包括</code>文档的更新的可见性状态，但是您可以从文档的 visibilityState 属性中获取该信息。</p>
+<p><code>document.visibilityState</code></p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>出于兼容性原因，请确保使用 <code>document.addEventListener</code> 而不是 window.addEventListener 来注册回调。<code>Safari &lt;14.0 仅支持前者。</code></p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>比如某个页面有动画，当我们的页面处于 <code>hidden</code> 状态时，动画是没有必要在后台一直运行的（节省资源、节省电量），我们可以将其暂停。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;visibilitychange&quot;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">document</span>.<span class="hljs-property">visibilityState</span> === <span class="hljs-string">&#x27;visible&#x27;</span>) &#123; <span class="hljs-comment">// or &#x27;hidden&#x27;</span><br>    backgroundMusic.<span class="hljs-title function_">play</span>();<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    backgroundMusic.<span class="hljs-title function_">pause</span>();<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-<img src="../img/performance-monitor.png" srcset="/img/loading.gif" lazyload />
+<h1 id="兼容性问题-Safari"><a href="#兼容性问题-Safari" class="headerlink" title="兼容性问题 (Safari)"></a>兼容性问题 (Safari)</h1><p>当 visibleStateState 属性的值转换为 hidden 时，Safari 不会按预期触发 visibilitychange；因此，在这种情况下，您还需要包含代码以侦听 <code>pagehide</code> 事件。</p>
+<h2 id="Window-页面隐藏事件-pagehide-event"><a href="#Window-页面隐藏事件-pagehide-event" class="headerlink" title="Window: 页面隐藏事件 (pagehide event)"></a>Window: 页面隐藏事件 (pagehide event)</h2><p>当浏览器在显示与会话历史记录不同的页面的过程中隐藏当前页面时，pagehide(页面隐藏) 事件会被发送到一个Window 。例如，当用户单击浏览器的“后退”按钮时，当前页面在显示上一页之前会收到一个pagehide(页面隐藏) 事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;pagehide&quot;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (event.<span class="hljs-property">persisted</span>) &#123;<br>    <span class="hljs-comment">/* the page isn&#x27;t being discarded, so it can be reused later */</span><br>  &#125;<br>&#125;, <span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>找到控制台的 <code>memory</code>，使用内存面板，<code>选第二个选项</code>，按时间线记录内存分配情况。</li>
-</ol>
-<img src="../img/memory.png" srcset="/img/loading.gif" lazyload />
+<p>或者 <code>使用 Window 上的 onpagehide 事件处理程序属性来编写：</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">window</span>.<span class="hljs-property">onpagehide</span> = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (event.<span class="hljs-property">persisted</span>) &#123;<br>    <span class="hljs-comment">/* the page isn&#x27;t being discarded, so it can be reused later */</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>点击开始，刷新页面或者切换页面，<code>蓝色柱子最高的</code>代表使用内存最多，蓝色柱子有一段<code>灰色</code>，表示已经回收了的内存。</p>
-<img src="../img/memory-detail.png" srcset="/img/loading.gif" lazyload />
 
-<ol start="3">
-<li>通过鼠标，聚焦到某一个最高的<code>蓝色柱子</code>，查看 <code>Constructor</code> 那一栏，找出实例最多的那个构造函数，点开并查看详情。</li>
-</ol>
 
             </div>
             <hr>
@@ -268,7 +265,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/memory-leak/">memory-leak</a>
+                      <a class="hover-with-bg" href="/tags/visibilityChange-document-visibilityState/">visibilityChange document.visibilityState</a>
                     
                   </div>
                 
@@ -285,18 +282,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/IntersectionObserver.html">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">更优雅的实现[加载更多功能、图片懒加载]</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/vite.html">
-                        <span class="hidden-mobile">深入浅出 Vite</span>
+                      <a href="/post/IntersectionObserver.html">
+                        <span class="hidden-mobile">更优雅的实现[加载更多功能、图片懒加载]</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -318,8 +309,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'http://yoursite.com/post/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E6%96%B9%E5%BC%8F.html';
-          this.page.identifier = '/post/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%8E%92%E6%9F%A5%E6%96%B9%E5%BC%8F.html';
+          this.page.url = 'http://yoursite.com/post/visibility-change.html';
+          this.page.identifier = '/post/visibility-change.html';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
